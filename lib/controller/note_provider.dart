@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../model/note_model.dart';
-import 'db_handler.dart';
+import '../services/db_handler.dart';
 
 class NoteProvider with ChangeNotifier {
   List<NoteModel> list = [];
@@ -28,8 +28,13 @@ class NoteProvider with ChangeNotifier {
   }
 
 
-  Future<void> deleteAll() async{
-    await DataBaseHandler.instance.deleteTable().then((value) => getNotes());
+  // Future<void> deleteNoteTable() async{
+  //   await DataBaseHandler.instance.deleteTable().then((value) => getNotes());
+  //   notifyListeners();
+  // }
+
+  Future <void> deleteAllData() async{
+    await DataBaseHandler.instance.deleteAllData().then((value) => getNotes());
     notifyListeners();
   }
 }

@@ -76,17 +76,21 @@ class DataBaseHandler {
   }
 
 
-  Future<void> deleteTable() async{
-    final db =await instance.database;
-    await db.execute("DROP TABLE IF EXISTS $noteTable");
-
-    await db.execute('''
-     CREATE TABLE $noteTable(
-     $noteID $idType,
-     $noteTitle $textType,
-     $noteBody $textType
-     )
-      ''');
+  // Future<void> deleteTable() async{
+  //   final db =await instance.database;
+  //   await db.execute("DROP TABLE IF EXISTS $noteTable");
+  //
+  //   await db.execute('''
+  //    CREATE TABLE $noteTable(
+  //    $noteID $idType,
+  //    $noteTitle $textType,
+  //    $noteBody $textType
+  //    )
+  //     ''');
+  // }
+  Future<void> deleteAllData() async{
+    final db = await instance.database;
+    await db.execute("DELETE FROM $noteTable");
   }
 
 }

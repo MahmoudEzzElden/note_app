@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:note_app/controller/db_handler.dart';
 import 'package:note_app/controller/list_grid_provider.dart';
-import 'package:note_app/controller/note_provider.dart';
-import 'package:note_app/model/note_model.dart';
 import 'package:note_app/view/screens/add_note.dart';
-import 'package:note_app/view/screens/note_details.dart';
-import 'package:note_app/view/widgets/empty_notes.dart';
 import 'package:note_app/view/widgets/notes_list.dart';
+import 'package:note_app/view/widgets/pop_scope.dart';
 import 'package:provider/provider.dart';
-
+import '../../controller/note_provider.dart';
 import '../widgets/NotesGrid.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,24 +20,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-
-      onWillPop: () async {
-        return(await showDialog(context: context, builder:(context)=> AlertDialog(
-          title: Text('You realy want to Leave?'),
-          actions: [
-            TextButton(onPressed: () {
-              SystemNavigator.pop();
-            }, child: Text('Yes')),
-            TextButton(onPressed: () {
-              Navigator.of(context).pop(false);
-            }, child: Text('No')),
-          ],
-        ),));
+    return CustomizedPopScope(
+      text: 'You Really Want To Leave?',
+      yesPressed: (){
+        SystemNavigator.pop();
+      },
+      noPressed: (){
+        Navigator.pop(context);
       },
       child: Scaffold(
-        backgroundColor: Colors.white70,
-
         body: SingleChildScrollView(
           child: SafeArea(
             child: Column(
@@ -49,20 +36,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                  //  IconButton(icon: Icon(Icons.delete), onPressed: () { Provider.of<NoteProvider>(context,listen: false).deleteAll(); },),
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title:
+                                    Text('You want to delete all your notes?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Provider.of<NoteProvider>(context,listen: false).deleteAllData();
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Yes'),
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      }, child: Text('No'))
+                                ],
+                              );
+                            });
+                      },
+                    ),
                     IconButton(
                       onPressed: () {
                         Provider.of<ListGridProvider>(context, listen: false)
                             .changeView();
                       },
-                      icon: Provider.of<ListGridProvider>(context).isGrid == true
-                          ? Icon(Icons.grid_view)
-                          : Icon(Icons.list),
+                      icon:
+                          Provider.of<ListGridProvider>(context).isGrid == true
+                              ? Icon(Icons.grid_view)
+                              : Icon(Icons.list),
                       color: Colors.blue,
                     ),
-                    IconButton(onPressed: (){
-                      Provider.of<ListGridProvider>(context,listen: false).changeTheme();
-                    }, icon: Icon(Icons.title))
+                    IconButton(
+                        onPressed: () {
+                          Provider.of<ListGridProvider>(context, listen: false)
+                              .changeTheme();
+                        },
+                        icon: Icon(Icons.title))
                   ],
                 ),
                 Text(
@@ -72,8 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 40,
                 ),
-                Provider.of<ListGridProvider>(context).isGrid==true?
-                    NotesGrid():NotesList()
+                Provider.of<ListGridProvider>(context).isGrid == true
+                    ? NotesGrid()
+                    : NotesList()
               ],
             ),
           ),

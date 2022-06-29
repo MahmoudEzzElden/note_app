@@ -4,7 +4,6 @@ import 'package:note_app/controller/note_provider.dart';
 import 'package:note_app/view/screens/add_note.dart';
 import 'package:note_app/view/screens/home_screen.dart';
 import 'package:note_app/view/screens/note_details.dart';
-import 'package:note_app/view/widgets/NotesGrid.dart';
 import 'package:provider/provider.dart';
 void main() {
   runApp(MultiProvider(providers: [

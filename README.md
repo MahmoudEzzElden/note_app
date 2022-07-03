@@ -20,7 +20,7 @@
 
 
 ## Screenshots
-![Example screenshot](screenshots/notelist.jpg?raw=true?width=200?height=200 "Notes ListView")
+![Example screenshot](screenshots/notelist.jpg?width=200?height=200 "Notes ListView")
 ![Example screenshot](screenshots/notegrid.jpg?raw=true "Notes GridView")
 ![Example screenshot](screenshots/notlistdark.jpg?raw=true "Notes ListView Dark")
 ![Example screenshot](screenshots/add.jpg?raw=true "Add Note")

@@ -20,15 +20,17 @@
 
 
 ## Screenshots
-![Example screenshot](screenshots/notelist.jpg?width=200?height=200 "Notes ListView")
-![Example screenshot](screenshots/notegrid.jpg?raw=true "Notes GridView")
-![Example screenshot](screenshots/notlistdark.jpg?raw=true "Notes ListView Dark")
-![Example screenshot](screenshots/add.jpg?raw=true "Add Note")
-![Example screenshot](screenshots/edit.jpg?raw=true "edit Note")
-![Example screenshot](screenshots/delete.jpg?raw=true "Delete Note")
-![Example screenshot](screenshots/swipeDelete.jpg?raw=true "Swipe Note")
-
-<!-- If you have screenshots you'd like to share, include them here. -->
+<div class="row">
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/add.jpg" width="200" height="400" />
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/edit.jpg" width="200" height="400" />
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/delete.jpg" width="200" height="400" />
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/swipeDelete.jpg" width="200" height="400" />
+</div>
+<div class="row">
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/notelist.jpg" width="200" height="400" />
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/notegrid.jpg" width="200" height="400" />
+    <img src="https://github.com/MahmoudEzzElden/note_app/blob/master/screenshots/notlistdark.jpg" width="200" height="400" />
+</div>
 
 
 
